@@ -1,16 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
-import Presentacion from './Presentacion';
-import NavBar from './component/NavBar'
-import ItemListContainer from './component/ItemListContainer'
+import Footer from './component/Footer/Footer';
+import Navbar from './component/Header/NavBar';
+import ItemListContainer from './component/Main/ItemListContainer';
+import Ejemplo from './component//Ejemplo/Ejemplo';
+import ItemDetailContainer from './component/Main/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Cart from './component/Cart/Cart';
 
 function App() {
+
   return (
-    <div>
-      <NavBar />
-      <ItemListContainer />
-   </div>
-  );
+    <BrowserRouter>
+      
+      <Navbar/>
+
+      <Routes>
+
+        <Route path="/" element={<ItemListContainer/>} />
+        <Route path='/category/:categoryName' element={<ItemListContainer/>}/>
+        <Route path="/item/:id" element={<ItemDetailContainer />}/>
+        <Route path="/Cart" element={<Cart/>} />
+        
+        
+        {/* <Route path="/" element={<Ejemplo />} /> */}
+      </Routes>  
+      <Footer/>
+    </BrowserRouter>
+  )
 }
 
 export default App
