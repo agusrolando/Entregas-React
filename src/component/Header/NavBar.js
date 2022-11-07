@@ -1,17 +1,45 @@
 import React from 'react';
 import CartWidget from './CartWidget';
 import { Link, NavLink } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+import { db } from '../../Service/firebaseConfig';
 
 const Navbar = () => {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const collectionCat = collection(db, 'categorias');
+        getDocs(collectionCat)
+            .then((res) => {
+                const categorias = res.docs.map((cat) => {
+                    return {
+                        id: cat.id,
+                        ...cat.data(),
+                    };
+                });
+                setCategories(categorias);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <nav className="menu">
             <Link to="/">
                 <h1>VH PISCINAS</h1>
             </Link>
             <ul>
-                <NavLink to="/category/Piletas">Piletas</NavLink>
+                {categories.map((cat) => (
+                        <NavLink key={cat.id} to={`/category/${cat.path}`}>
+                            {cat.name}
+                        </NavLink>
+                    ))}
+                {/* <NavLink to="/category/Piletas">Piletas</NavLink>
                 <NavLink to="/category/Exterior">Exterior</NavLink>
                 <NavLink to="/category/Jacuzzi">Jacuzzi</NavLink>
+                <NavLink to="/category/Masvendidos">Mas vendidos</NavLink> */}
             </ul>
             <Link to="/cart">
                 <CartWidget />
