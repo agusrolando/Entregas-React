@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext} from "react";
+import { useState, useContext} from "react";
 import {Contexto} from '../../CartContext/EjemploContext';
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../Service/firebaseConfig";
@@ -61,7 +61,7 @@ const Form = () => {
         setEmail2(e.target.value);
     };
 
-    console.log(orderId);
+   
 
 
     if (orderId) {

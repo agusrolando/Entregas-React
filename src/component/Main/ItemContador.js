@@ -1,9 +1,8 @@
-import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
 
 const ItemContador = ({stock, initial=1, onAdd}) => {
     const [count, setCount] = useState(initial);
-    // const { onAdd } = props; 
+  
 
     const sumar = () => {
         count < stock && setCount(count + 1);
@@ -15,7 +14,7 @@ const ItemContador = ({stock, initial=1, onAdd}) => {
        
     };
 
-    // Para la opcion de crear la funcion del boton agregar al carrito por fuera
+    
     const add = () => { 
         onAdd(count);
     };

@@ -10,7 +10,6 @@ const Proveedor = ( {children} ) => {
         const producto = {...item, cantidad};
         if (isInCart(producto.id)) {
             addItem(producto);
-        // (addItem) sumo cantidad 
         }
         else {
              setCart([...cart, producto]);
@@ -25,7 +24,6 @@ const Proveedor = ( {children} ) => {
                 const prodActualizado = {
                     ...prodDelCart,
                     cantidad: prodAgregado.cantidad
-                    // cantidad: prodDelCart + prodAgregado.cantidad   ...opcion de sumar las cantidades
                 };
                 return prodActualizado;
             } else {
@@ -66,7 +64,6 @@ const Proveedor = ( {children} ) => {
         return product?.cantidad;
     };
 
-    console.log(cart);
 
     return(
         <div>

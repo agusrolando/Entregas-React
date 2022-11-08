@@ -36,10 +36,6 @@ const Navbar = () => {
                             {cat.name}
                         </NavLink>
                     ))}
-                {/* <NavLink to="/category/Piletas">Piletas</NavLink>
-                <NavLink to="/category/Exterior">Exterior</NavLink>
-                <NavLink to="/category/Jacuzzi">Jacuzzi</NavLink>
-                <NavLink to="/category/Masvendidos">Mas vendidos</NavLink> */}
             </ul>
             <Link to="/cart">
                 <CartWidget />
